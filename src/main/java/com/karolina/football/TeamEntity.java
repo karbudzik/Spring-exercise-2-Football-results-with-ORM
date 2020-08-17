@@ -3,10 +3,7 @@ package com.karolina.football;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Setter
 @Getter
@@ -16,6 +13,7 @@ public class TeamEntity {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(unique = true)
     private String name;
     private String country;
     private String city;
