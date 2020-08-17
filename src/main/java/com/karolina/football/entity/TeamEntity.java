@@ -2,6 +2,8 @@ package com.karolina.football.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 
 @Setter
@@ -16,4 +18,7 @@ public class TeamEntity {
     private String name;
     private String country;
     private String city;
+    @Column(columnDefinition = "integer default 0")
+    @NonNull
+    private Integer score;
 }
