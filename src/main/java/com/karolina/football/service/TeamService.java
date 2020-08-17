@@ -1,10 +1,14 @@
-package com.karolina.football;
+package com.karolina.football.service;
 
+import com.karolina.football.entity.TeamEntity;
+import com.karolina.football.repository.TeamRepository;
 import com.sun.istack.NotNull;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+@NoArgsConstructor
 @Service
 public class TeamService {
     @Autowired

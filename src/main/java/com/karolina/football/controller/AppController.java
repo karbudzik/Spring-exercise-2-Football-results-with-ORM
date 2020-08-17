@@ -1,9 +1,9 @@
-package com.karolina.football;
+package com.karolina.football.controller;
 
+import com.karolina.football.entity.TeamEntity;
+import com.karolina.football.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.PostConstruct;
 
 @RestController
 public class AppController {

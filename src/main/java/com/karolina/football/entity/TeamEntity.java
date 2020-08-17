@@ -1,8 +1,7 @@
-package com.karolina.football;
+package com.karolina.football.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 @Setter
@@ -11,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "teams")
 public class TeamEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String name;
