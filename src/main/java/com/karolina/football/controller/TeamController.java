@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 public class TeamController {
@@ -32,7 +33,7 @@ public class TeamController {
     }
 
     @GetMapping(value = "/teams/get/containing/{text}")
-    public TeamEntity getTeamWithTextInName(@PathVariable("text") String text) {
+    public List<TeamEntity> getTeamWithTextInName(@PathVariable("text") String text) {
         return teamService.getTeamWithTextInName(text);
     }
 

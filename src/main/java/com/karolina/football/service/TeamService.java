@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TeamService {
@@ -23,12 +23,17 @@ public class TeamService {
     }
 
     public TeamEntity getBestTeam() {
-        // picks the team with highest score
-        // score is counted as follows: 3pt for won game, 1pt for a draw and 0pt for lost game
         List<TeamEntity> allTeams = teamRepository.findAll();
         return allTeams.stream()
                 .max(Comparator.comparing(TeamEntity::getScore))
                 .orElseThrow(NoSuchElementException::new);
+    }
+
+    public List<TeamEntity> getTeamWithTextInName(String text) {
+        List<TeamEntity> allTeams = teamRepository.findAll();
+        return allTeams.stream()
+                .filter(a -> a.getName().toUpperCase().contains(text.toUpperCase()))
+                .collect(Collectors.toList());
     }
 
     public ResponseEntity<Object> createTeam(TeamEntity teamEntity) {
