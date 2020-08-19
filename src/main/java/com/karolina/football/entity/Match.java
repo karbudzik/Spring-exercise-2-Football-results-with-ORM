@@ -9,15 +9,15 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "matches")
-public class MatchEntity {
+public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date;
-    @OneToOne(targetEntity = TeamEntity.class, cascade = CascadeType.ALL)
-    private TeamEntity homeTeamEntity;
-    @OneToOne(targetEntity = TeamEntity.class, cascade = CascadeType.ALL)
-    private TeamEntity awayTeamEntity;
+    @OneToOne(targetEntity = Team.class, cascade = CascadeType.ALL)
+    private Team homeTeam;
+    @OneToOne(targetEntity = Team.class, cascade = CascadeType.ALL)
+    private Team awayTeam;
     private Integer goalsHome;
     private Integer goalsAway;
 }
