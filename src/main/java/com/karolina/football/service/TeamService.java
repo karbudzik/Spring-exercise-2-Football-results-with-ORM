@@ -2,7 +2,6 @@ package com.karolina.football.service;
 
 import com.karolina.football.entity.Team;
 import com.karolina.football.repository.TeamRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
