@@ -14,8 +14,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class TeamService {
-    @Autowired
     private TeamRepository teamRepository;
+
+    public TeamService(TeamRepository teamRepository) {
+        this.teamRepository = teamRepository;
+    }
 
     public List<Team> getTeams() {
         return teamRepository.findAll();

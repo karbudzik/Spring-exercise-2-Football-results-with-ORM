@@ -7,11 +7,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MatchService {
-    @Autowired
-    MatchRepository matchRepository;
+    private MatchRepository matchRepository;
+
+    public MatchService(MatchRepository matchRepository) {
+        this.matchRepository = matchRepository;
+    }
 
     public List<Match> getMatches() {
         return matchRepository.findAll();
@@ -26,8 +30,12 @@ public class MatchService {
         }
     }
 
-    public Match getMatchWithMostGoals() {
-        return matchRepository.getMatchWithMostGoals();
-        // obsługa wyjątków
+    public Optional<Match> getMatchWithMostGoals() {
+        List<Match> matchesSorted = matchRepository.getMatchesSortedByMostGoalsTotal();
+        if (matchesSorted.size() > 0) {
+            return Optional.of(matchesSorted.get(0));
+        } else {
+            return Optional.empty();
+        }
     }
 }

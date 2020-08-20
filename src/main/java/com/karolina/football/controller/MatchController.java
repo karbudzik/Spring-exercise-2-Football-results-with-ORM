@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 public class MatchController {
@@ -19,13 +21,18 @@ public class MatchController {
         this.teamService = teamService;
     }
 
-    @GetMapping("/matches/all")
+    @GetMapping("/matches")
     public List<Match> getMatches() {
         return matchService.getMatches();
     }
 
-    @GetMapping("/matches/get/most-goals")
+    @GetMapping("/matches/most-goals")
     public Match getMatchesWithMostGoals() {
-        return matchService.getMatchWithMostGoals();
+        Optional<Match> matchOptional = matchService.getMatchWithMostGoals();
+        if (matchOptional.isPresent()) {
+            return matchOptional.get();
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }

@@ -19,17 +19,17 @@ public class TeamController {
         this.matchService = matchService;
     }
 
-    @GetMapping("/teams/all")
+    @GetMapping("/teams")
     public List<Team> getTeams() {
         return teamService.getTeams();
     }
 
-    @GetMapping("/teams/get/best")
+    @GetMapping("/teams/best")
     public Team getBestTeam() {
         return teamService.getBestTeam();
     }
 
-    @GetMapping(value = "/teams/get/containing={text}")
+    @GetMapping(value = "/teams/containing={text}")
     public List<Team> getTeamWithTextInName(@PathVariable("text") String text) {
         return teamService.getTeamWithTextInName(text);
     }

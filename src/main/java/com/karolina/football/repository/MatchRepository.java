@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface MatchRepository extends JpaRepository<Match, Long> {
 
-    @Query("SELECT FROM Match m")
-    Match getMatchWithMostGoals();
-    // fix query
+    @Query("SELECT m FROM Match m GROUP BY m.id ORDER BY SUM(m.goalsAway+m.goalsHome) DESC")
+    List<Match> getMatchesSortedByMostGoalsTotal();
+
 }

@@ -14,4 +14,4 @@ INSERT INTO matches
 VALUES (default, TO_DATE('2019-07-06','YYYY-MM-DD'), 0, 2, 3, 1);
 
 INSERT INTO matches
-VALUES (default, TO_DATE('2019-07-09','YYYY-MM-DD'), 0, 0, 1, 3);
+VALUES (default, TO_DATE('2019-07-09','YYYY-MM-DD'), 10, 10, 1, 3);
